@@ -1,9 +1,7 @@
-// import statements
 import { getPokemonTypeColor } from './typeColorUtils.js';
 
 const card = document.getElementById("card");
 
-// Kartın içeriğini oluşturma fonksiyonu
 export const createPokemonCard = (data) => {
   const hp = data.stats[0].base_stat;
   const imgSrc = data.sprites.other.dream_world.front_default;
@@ -14,7 +12,6 @@ export const createPokemonCard = (data) => {
 
   const themeColor = getPokemonTypeColor(data.types[0].type.name);
   
-  // Kart içeriğini güncelle
   card.innerHTML = `
     <p class="hp">
       <span>HP</span>
@@ -42,13 +39,12 @@ export const createPokemonCard = (data) => {
   appendTypes(data.types);
   applyTypeStyles(themeColor);
 
-  card.style.display = 'block'; // Kartı görünür yap
+  card.style.display = 'block'; 
 };
 
-// Türleri ekle
 const appendTypes = (types) => {
   const typesDiv = document.querySelector(".types");
-  typesDiv.innerHTML = ''; // Önceki türleri temizle
+  typesDiv.innerHTML = ''; 
   types.forEach((item) => {
     let span = document.createElement("span");
     span.textContent = item.type.name;
@@ -56,7 +52,6 @@ const appendTypes = (types) => {
   });
 };
 
-// Kart stilini ayarla
 export const applyTypeStyles = (color) => {
   card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`;
   card.querySelectorAll(".types span").forEach((typeSpan) => {
@@ -64,33 +59,32 @@ export const applyTypeStyles = (color) => {
   });
 };
 
-// Verileri almak için ayrı fonksiyon
 export const fetchPokemonData = (pokemon) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      createPokemonCard(data); // Veriyi aldıktan sonra kartı oluştur
+      createPokemonCard(data); 
     })
     .catch((error) => console.error("Error fetching Pokémon data:", error));
 };
 
-// Event listenerlar
+
 document.querySelectorAll('.btn').forEach(button => {
   button.addEventListener('click', (event) => {
-    event.stopPropagation(); // Kartı açarken arka plan tıklamasını engelle
+    event.stopPropagation(); 
     const pokemonName = button.dataset.poke;
-    fetchPokemonData(pokemonName); // Burada pokemon adını gönderiyoruz
+    fetchPokemonData(pokemonName);
   });
 });
 
-// Kartın dışına tıklanırsa kartı kapat
+
 document.addEventListener('click', () => {
-  card.innerHTML = ''; // Kart içeriğini temizle
-  card.style.display = 'none'; // Kartı gizle
+  card.innerHTML = ''; 
+  card.style.display = 'none';
 });
 
-// Kartın içindeki resme tıklanırsa kartı kapat
+
 card.addEventListener('click', (event) => {
-  event.stopPropagation(); // Kart içinde tıklamayı engelle
+  event.stopPropagation(); 
 });

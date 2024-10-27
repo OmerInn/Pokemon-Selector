@@ -1,4 +1,3 @@
-// utils.js
 export function getPokemonTypeColor(type) {
   const typeColor = {
     bug: "#26de81",
@@ -19,5 +18,5 @@ export function getPokemonTypeColor(type) {
     water: "#0190FF",
   };
   
-  return typeColor[type] || '#A8A878'; // Varsayılan renk
+  return typeColor[type] || '#A8A878'; 
 }

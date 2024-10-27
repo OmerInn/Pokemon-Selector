@@ -19,7 +19,7 @@
   padding: 20px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  z-index: 1000; /* Kartın z-index değerini artırın */
+  z-index: 1000;
   display: none;
   background-color: #ffffff;
 }
@@ -125,11 +125,12 @@
   left: 30%;
   top: 50%;
   transform: translateY(-50%);
-   width: 800px; /* Genişliği koruyun */
-  height: 500px; /* Yüksekliği belirleyin */
+   width: 800px;
+  height: 500px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  z-index: 2;
 }
 
 .img-box .img-slider {
@@ -149,8 +150,8 @@
 }
 
 .img-item img {
-  width: 50%; /* Ebeveyn elemanın genişliğine göre ayarlanır */
-  height: auto; /* Yükseklik otomatik ayarlanır, böylece oran korunur */
+  width: 50%;
+  height: auto; 
   pointer-events: none;
   filter: drop-shadow(0 0 10px rgba(0,0,0,.2));
   transform: scale(0);
@@ -186,9 +187,9 @@
 
 .thumb li img {
   margin-left: auto;
-  max-width: 100%; /* Genişliği kapsayıcı elementin %100'üne ayarlar */
-  height: auto; /* Yüksekliği orantılı olarak ayarlar */
-  object-fit: cover; /* Resmi kapsayıcıyı dolduracak şekilde ayarlar */
+  max-width: 100%; 
+  height: auto;
+  object-fit: cover;
   margin-left: auto;
   margin-right: auto;
   transition: transform 0.3s ease;
@@ -206,7 +207,7 @@
   height: 100%;
   opacity: 0;
   transition: .2s;
-  z-index: 0; /* Opak arka planın z-index değerini düşürün */
+  z-index: 0;
 }
 
 .item.active .bg {
