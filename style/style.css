@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+.container {
+  width: 350px;
+}
+
+#card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  z-index: 1000; /* Kartın z-index değerini artırın */
+  display: none;
+  background-color: #ffffff;
+}
+#card img {
+  display: block;
+  width: 180px;
+  max-height: 200px;
+  position: relative;
+  margin: 20px auto;
+}
+.hp {
+  width: 80px;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 30px;
+  margin-left: auto;
+  font-weight: 400;
+}
+.poke-name {
+  text-align: center;
+  font-weight: 600;
+}
+.types {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 40px 0;
+}
+.hp span,
+.types span {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.carousel {
+ 
+  height: 100vh;
+}
+
+.item .info-box {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.item.active .info-box {
+  z-index: 2;
+}
+
+.info-box .info-slider {
+  height: inherit;
+  transition: .5s ease;
+}
+
+.info-slider .info-item {
+  height:inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  transform: translateY(calc(var(--i) * 100%));
+}
+
+.info-item h2 {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.info-item p {
+  font-size: 16px;
+  margin: 15px 0 20px;
+}
+
+.info-item .btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 48px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+
+}
+
+
+.item .img-box {
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  transform: translateY(-50%);
+   width: 800px; /* Genişliği koruyun */
+  height: 500px; /* Yüksekliği belirleyin */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-box .img-slider {
+  max-width: 100%;
+  width: inherit;
+  height: inherit;
+  transition: 1s ease;
+}
+
+.img-slider .img-item {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(calc(var(--i) * 100%));
+}
+
+.img-item img {
+  width: 50%; /* Ebeveyn elemanın genişliğine göre ayarlanır */
+  height: auto; /* Yükseklik otomatik ayarlanır, böylece oran korunur */
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,.2));
+  transform: scale(0);
+  transition: .5s ease;
+}
+
+.item.active .img-item img {
+  transform: scale(1);
+}
+
+.thumb {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+}
+
+.thumb li {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.thumb li.selected {
+  border: 3px solid #fff;
+}
+
+
+.thumb li img {
+  margin-left: auto;
+  max-width: 100%; /* Genişliği kapsayıcı elementin %100'üne ayarlar */
+  height: auto; /* Yüksekliği orantılı olarak ayarlar */
+  object-fit: cover; /* Resmi kapsayıcıyı dolduracak şekilde ayarlar */
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease;
+
+}
+.thumb li img:hover {
+  transform: scale(1.1);
+}
+
+.item .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: .2s;
+  z-index: 0; /* Opak arka planın z-index değerini düşürün */
+}
+
+.item.active .bg {
+  opacity: 1;
+}
+
+.item .bg::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 255, 255, .8);
+  border-radius: 50%;
+  filter: blur(200px);
+}
+
